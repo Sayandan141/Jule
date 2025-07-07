@@ -1,12 +1,24 @@
-fn Max(values: ...int): int {
-	if len(values) == 0 {
-		ret 0
-	}
-	let mut max = values[0]
-	for _, x in values[1:] {
-		if max < x {
-			max = x
-		}
-	}
-	ret max
+// Find the largest number in a list of integers, return 0 if empty.
+fn Max(values: &[i32]) -> i32 {
+    // If list is empty, return 0.
+    if values.is_empty() {
+        return 0;
+    }
+    // Start with first number as max.
+    let mut max = values[0];
+    // Check remaining numbers.
+    for &x in values[1..].iter() {
+        // Update max if current number is bigger.
+        if max < x {
+            max = x;
+        }
+    }
+    // Return the largest number.
+    max
+}
+
+// Test the function.
+fn main() {
+    println!("Max of [3, 5, 2, 7]: {}", Max(&[3, 5, 2, 7])); // Outputs: 7
+    println!("Max of []: {}", Max(&[])); // Outputs: 0
 }
